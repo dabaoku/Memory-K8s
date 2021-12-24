@@ -1,0 +1,14 @@
+services:
+  server:
+    build: server
+    command: ["python", "app.py"]
+    ports:
+      - "5000:9007"
+
+  client:
+    build: client
+    command: ["npm", "start"]
+    ports:
+      - '3000:3000'
+    depends_on:
+      - server
