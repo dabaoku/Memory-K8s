@@ -6,6 +6,7 @@ from bson import json_util
 from flask import request
 from bson.objectid import ObjectId
 from flask_cors import CORS
+from datetime import datetime
 
 app = flask.Flask(__name__)
 CORS(app)
@@ -26,17 +27,19 @@ def getPosts():
 @app.route("/", methods=['POST'])
 def createPost():
     data = request.json
-    response = db.memory.insert_one({
+    res = db.memory.insert_one({
         'title': data['title'],
         'message': data['message'],
         'creator': data['creator'],
         'tags': data['tags'],
         'selectedFile': data['selectedFile'],
-        'likeCount': data['likeCount'],
-        'createdAt': data['createdAt']})
-    output = {'Status': 'Successfully Inserted',
-              'Document_ID': str(response.inserted_id)}
-    return output
+        'likeCount': 0,
+        'createdAt': datetime.now()})
+    # get the data after create data
+    post = db.memory.find_one({'_id': res.inserted_id})
+    res = json.loads(json_util.dumps(post))
+    return flask.jsonify(res)
+
 
 # CRUD - GetPostById
 @app.route("/<obj_id>", methods=['GET'])
@@ -48,9 +51,9 @@ def getPost(obj_id):
 # CRUD - DeletePost
 @app.route('/<obj_id>', methods=['DELETE'])
 def deletePost(obj_id):
-    response = db.memory.delete_one({'_id': ObjectId(obj_id)})
+    res = db.memory.delete_one({'_id': ObjectId(obj_id)})
     output = {'Status': 'Successfully Deleted',
-              'Deleted_Count': str(response.deleted_count)}
+              'Deleted_Count': str(res.deleted_count)}
     return output
 
 # CRUD - UpdatePost
@@ -79,4 +82,4 @@ def likePost(obj_id):
     return flask.jsonify(res)
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0', port=9007)
+    app.run(debug=True, host='0.0.0.0', port=9007)
