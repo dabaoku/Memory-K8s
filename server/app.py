@@ -5,8 +5,10 @@ import json
 from bson import json_util
 from flask import request
 from bson.objectid import ObjectId
+from flask_cors import CORS
 
 app = flask.Flask(__name__)
+CORS(app)
 
 # MongoDB Atlas Connection (UserName: flask, pwd: flask, Database: flask, Collection: memory)
 CONNECTION_STRING = "mongodb+srv://flask:flask@cluster0.ijnpm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
