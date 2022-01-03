@@ -25,12 +25,18 @@ const App = () => {
         <Typography className={classes.heading} variant="h2" align="center">
           Memories
         </Typography>
-        <img
-          className={classes.image}
-          src={memories}
-          alt="memories"
-          height="60"
-        />
+        <>
+          {memories ? (
+            <img
+              className={classes.image}
+              src={memories}
+              alt="memories"
+              height="60"
+            />
+          ) : (
+            <spinner />
+          )}
+        </>
       </AppBar>
       {/* {provide simple animation} */}
       <Grow in>
