@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memory
+  labels:
+    app: memory
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: memory
+  template:
+    metadata:
+      labels:
+        app: memory
+    spec:
+      containers:
+        - name: memory-project
+          image: leo1999806/project_client:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
