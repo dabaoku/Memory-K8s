@@ -17,11 +17,11 @@ $ npm start
 Build docker image
 
 ```bash=
-$ docker build -t client:latest -f Dockerfile .
+$ docker build -t project_client:latest -f Dockerfile .
 ```
 
 Run docker container
 
 ```bash=
-$ docker run -it -p 3000:3000 client
+$ docker run -it -p 3000:3000 project_client
 ```
