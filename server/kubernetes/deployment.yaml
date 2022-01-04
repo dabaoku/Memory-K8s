@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-server-deploy
+  labels:
+    type: restapi
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      app: app-server
+  template:
+    metadata:
+      name: app-server-tmpl
+      labels:
+        app: app-server
+    spec:
+      containers:
+        - name: app-server
+          image: dabaoku/app-server:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000

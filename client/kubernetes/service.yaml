@@ -1,13 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  #the Serivce Name- it should match with the lable name of the deployment
-  name: memory
+  name: app-client-svc
 spec:
-  #type of the service
   type: NodePort
   selector:
-    app: memory
+    app: app-client
   ports:
     - port: 3000
       targetPort: 3000
