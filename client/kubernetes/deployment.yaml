@@ -1,22 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: memory
+  name: app-client-deploy
   labels:
-    app: memory
+    app: app-client
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: memory
+      app: app-client
   template:
     metadata:
+      name: app-client-tmpl
       labels:
-        app: memory
+        app: app-client
     spec:
       containers:
-        - name: memory-project
-          image: leo1999806/project_client:latest
+        - name: app-client
+          image: dabaoku/app-client:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
