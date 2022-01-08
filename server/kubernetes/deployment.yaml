@@ -5,8 +5,8 @@ metadata:
   labels:
     type: restapi
 spec:
-  replicas: 3
-  selector: 
+  replicas: 1
+  selector:
     matchLabels:
       app: app-server
   template:

@@ -5,7 +5,7 @@ metadata:
   labels:
     app: app-client
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: app-client
@@ -20,4 +20,4 @@ spec:
           image: dabaoku/app-client:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 3000

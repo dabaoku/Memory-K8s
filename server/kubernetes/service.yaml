@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: app-server-svc
 spec:
-  type: LoadBalancer
+  type: ClusterIP
+  clusterIP: 10.102.254.116
   selector:
     app: app-server
   ports:
-    - protocol: "TCP"
-      port: 5000
+    - port: 5000
       targetPort: 5000
+      protocol: TCP
