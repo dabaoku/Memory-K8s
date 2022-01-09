@@ -5,7 +5,7 @@ metadata:
   labels:
     app: app-client
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: app-client
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: app-client
-          image: dabaoku/app-client:latest
+          image: leo1999806/app-client:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
+            - containerPort: 3000

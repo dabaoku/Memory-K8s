@@ -3,11 +3,10 @@ kind: Service
 metadata:
   name: app-client-svc
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: app-client
   ports:
     - port: 3000
       targetPort: 3000
       protocol: TCP
-      nodePort: 32000

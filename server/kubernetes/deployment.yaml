@@ -5,8 +5,8 @@ metadata:
   labels:
     type: restapi
 spec:
-  replicas: 3
-  selector: 
+  replicas: 1
+  selector:
     matchLabels:
       app: app-server
   template:
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: app-server
-          image: dabaoku/app-server:latest
+          image: leo1999806/app-server:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
