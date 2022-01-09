@@ -1,7 +1,7 @@
 # memory
 Use FReMP stack to build memory app and deploy on Kubernetes
 
-## Run on docker (without deploy on k8s)
+## 🤔 Run on docker (without deploy on k8s)
 ```bash=
 $ docker-compose up
 ```
@@ -10,20 +10,23 @@ This one command boots up a local server for Flask (on port 5000) and React (on 
 http://localhost:3000/ 
 http://localhost:5000/ 
 ```
-## Run on minikube
+
+## 😎 Run on minikube
 Download minikube with Homebrew and start minikube
 ```bash=
 $ brew install minikube
 $ minikube start
 ```
 
-Change directory to server/kubernetes and client/kubernetes to create the yaml file
+Change directory to kubernetes and create the yaml file
 ```bash=
-$ kubectl create -f deployment.yaml
-$ kubectl create -f service.yaml
+$ cd kubernetes
+$ kubectl apply -f .
 ```
 
-Use ***minikube service app-client-svc*** to check the memory app
+Use minikube tunnel to connect LoadBalancer services
 ```bash=
-$ minikube service app-client-svc
+$ minikube tunnel
 ```
+
+Then you can use memory app for 127.0.0.1:3000
