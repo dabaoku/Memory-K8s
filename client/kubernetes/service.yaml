@@ -3,8 +3,7 @@ kind: Service
 metadata:
   name: app-client-svc
 spec:
-  type: ClusterIP
-  clusterIP: 10.99.153.26
+  type: LoadBalancer
   selector:
     app: app-client
   ports:
