@@ -30,3 +30,7 @@ $ minikube tunnel
 ```
 
 Then you can use memory app for 127.0.0.1:3000
+
+
+## ⚙️ k8s Architecture
+![圖片 1](https://user-images.githubusercontent.com/54298121/149138390-b6ec5ef8-caf2-460e-9bf8-17a87ae265ed.png)
